@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { TeamPageLayout } from ".";
+import { CarsPageLayout } from ".";
 
 const TeamFixturesPage = () => {
   const router = useRouter();
@@ -11,6 +11,6 @@ const TeamFixturesPage = () => {
   );
 };
 
-TeamFixturesPage.getLayout = TeamPageLayout;
+TeamFixturesPage.getLayout = CarsPageLayout;
 
 export default TeamFixturesPage;

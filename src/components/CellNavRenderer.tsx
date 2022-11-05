@@ -18,7 +18,7 @@ const CellLinkRenderer = forwardRef(
     const rowIndex = props.rowIndex;
     // const href = `/classes/${props.data.id}`
     const { team } = router.query;
-    const href = `/teams/${team}/${rowIndex}`;
+    const href = `/teams/${team}/shop/${rowIndex}`;
 
     // const onClickHandler = () => {
     //   console.log("clicked");

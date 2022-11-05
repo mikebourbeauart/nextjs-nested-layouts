@@ -1,8 +1,9 @@
 import { useRouter } from "next/router";
-import { TeamPageLayout } from ".";
+import { ShopPageLayout } from ".";
 import { useState, useEffect } from "react";
+import { CarsGrid } from "~/components/AgGridExample";
 
-const TeamPlayersPage = () => {
+const DetailsPage = () => {
   const router = useRouter();
   const { details } = router.query;
   const [carData, setCarData] = useState({
@@ -23,14 +24,14 @@ const TeamPlayersPage = () => {
   console.log(carData);
 
   return (
-    <section>
+    <div>
       <h3>Make of {carData.make}</h3>
       <h3>Model is {carData.model}</h3>
       <h3>Priced at {carData.price}</h3>
-    </section>
+    </div>
   );
 };
 
-TeamPlayersPage.getLayout = TeamPageLayout;
+DetailsPage.getLayout = ShopPageLayout;
 
-export default TeamPlayersPage;
+export default DetailsPage;

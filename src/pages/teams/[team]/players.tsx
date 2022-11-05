@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { TeamPageLayout } from ".";
+import { CarsPageLayout } from ".";
 
 const TeamPlayersPage = () => {
   const router = useRouter();
@@ -11,6 +11,6 @@ const TeamPlayersPage = () => {
   );
 };
 
-TeamPlayersPage.getLayout = TeamPageLayout;
+TeamPlayersPage.getLayout = CarsPageLayout;
 
 export default TeamPlayersPage;

@@ -3,9 +3,8 @@ import Link from "next/link";
 import { TeamsPageLayout } from "../index";
 import nestLayout from "../../../utils/nestLayout";
 import { useEffect, useState } from "react";
-import { CarsGrid } from "~/components/AgGridExample";
 
-const TeamPage = () => {
+const CarsPage = () => {
   const router = useRouter();
   const { team } = router.query;
   return <section>{/* <h3>{team} i dah team</h3> */}</section>;
@@ -15,8 +14,8 @@ const NestedLayout = ({ children }: any) => {
   const [data, setData] = useState("");
 
   useEffect(() => {
-    console.log("TeamPageLayout mounted");
-    return () => console.log("TeamPageLayout unmounted");
+    console.log("CarsPageLayout mounted");
+    return () => console.log("CarsPageLayout unmounted");
   }, []);
 
   const router = useRouter();
@@ -37,17 +36,32 @@ const NestedLayout = ({ children }: any) => {
   };
 
   return (
-    <div className="flex flex-row flex-auto">
-      <CarsGrid />
-      <section>{children}</section>
+    <div className="flex flex-col ">
+      <header>
+        <nav>
+          <ul>
+            <li>
+              <Link href={`/teams/${team}/shop`}>Shop</Link>
+            </li>
+            <li>
+              <Link href={`/teams/${team}`}>About</Link>
+            </li>
+
+            <li>
+              <Link href={`/teams/${team}/fixtures`}>Fixtures</Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      {children}
     </div>
   );
 };
 
 const getLayout = (page: any) => <NestedLayout>{page}</NestedLayout>;
 
-export const TeamPageLayout = nestLayout(TeamsPageLayout, getLayout);
+export const CarsPageLayout = nestLayout(TeamsPageLayout, getLayout);
 
-TeamPage.getLayout = TeamPageLayout;
+CarsPage.getLayout = CarsPageLayout;
 
-export default TeamPage;
+export default CarsPage;
