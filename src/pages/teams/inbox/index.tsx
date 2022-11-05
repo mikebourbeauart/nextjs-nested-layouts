@@ -37,21 +37,7 @@ const NestedLayout = ({ children }: any) => {
 
   return (
     <div className="flex flex-col ">
-      <header>
-        <nav>
-          <ul>
-            <li>
-              <Link href={`/teams/${team}`}>About</Link>
-            </li>
-            <li>
-              <Link href={`/teams/${team}/shop`}>Shop</Link>
-            </li>
-            <li>
-              <Link href={`/teams/${team}/fixtures`}>Fixtures</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+      <h1>Your emails</h1>
       {children}
     </div>
   );

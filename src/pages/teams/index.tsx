@@ -18,13 +18,13 @@ export const NestedLayout = ({ children }: any) => {
         <nav>
           <ol>
             <li>
-              <Link href="/teams/cars/shop">Cars</Link>
+              <Link href="/teams/cars">Cars</Link>
             </li>
             <li>
-              <Link href="/teams/team2/shop">Team2</Link>
+              <Link href="/teams/inbox">Inbox</Link>
             </li>
             <li>
-              <Link href="/teams/team3/shop">Team3</Link>
+              <Link href="/teams/team3">Team3</Link>
             </li>
           </ol>
         </nav>
