@@ -6,6 +6,7 @@ import "ag-grid-community/styles/ag-grid.css"; // Core grid CSS, always needed
 import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 import { useFetchData } from "./use-fetch-data";
 import { CellClickedEvent } from "ag-grid-community";
+import CellNavRenderer from "./CellNavRenderer";
 
 export function CarsGrid({ childToParent }: any) {
   const gridRef = useRef<AgGridReact>(null);
@@ -14,7 +15,7 @@ export function CarsGrid({ childToParent }: any) {
   const [colDefs, setColDefs] = useState([
     { field: "make" },
     { field: "model" },
-    { field: "price" },
+    { field: "price", cellRenderer: CellNavRenderer },
   ]);
 
   useEffect(() => {
@@ -29,7 +30,7 @@ export function CarsGrid({ childToParent }: any) {
       console.log("selectedNode", selectedNode);
       if (selectedNode && selectedNode) {
         console.log("selectionChangeData", selectedNode.data);
-        childToParent(selectedNode ? selectedNode.id : null);
+        // childToParent(selectedNode ? selectedNode.id : null);
       }
     }
   };
@@ -43,7 +44,7 @@ export function CarsGrid({ childToParent }: any) {
         pagination={true}
         rowSelection="single"
         defaultColDef={{ sortable: true, filter: true }}
-        onSelectionChanged={onSelectionChangedHandler}
+        // onSelectionChanged={onSelectionChangedHandler}
       ></AgGridReact>
     </div>
   );

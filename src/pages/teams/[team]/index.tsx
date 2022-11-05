@@ -8,11 +8,7 @@ import { CarsGrid } from "~/components/AgGridExample";
 const TeamPage = () => {
   const router = useRouter();
   const { team } = router.query;
-  return (
-    <section>
-      <h3>{team}</h3>
-    </section>
-  );
+  return <section>{/* <h3>{team} i dah team</h3> */}</section>;
 };
 
 const NestedLayout = ({ children }: any) => {
@@ -41,22 +37,7 @@ const NestedLayout = ({ children }: any) => {
   };
 
   return (
-    <div className="flex flex-row">
-      {/* <header>
-        <nav>
-          <ul>
-            <li>
-              <Link href={`/teams/${team}`}>About</Link>
-            </li>
-            <li>
-              <Link href={`/teams/${team}/players`}>Players</Link>
-            </li>
-            <li>
-              <Link href={`/teams/${team}/fixtures`}>Fixtures</Link>
-            </li>
-          </ul>
-        </nav>
-      </header> */}
+    <div className="flex flex-row flex-auto">
       <CarsGrid />
       <section>{children}</section>
     </div>
