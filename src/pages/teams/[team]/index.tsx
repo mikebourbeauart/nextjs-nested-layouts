@@ -2,7 +2,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { TeamsPageLayout } from "../index";
 import nestLayout from "../../../utils/nestLayout";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { CarsGrid } from "~/components/AgGridExample";
 
 const TeamPage = () => {
   const router = useRouter();
@@ -14,7 +15,9 @@ const TeamPage = () => {
   );
 };
 
-const NestedLayout = ({ children }) => {
+const NestedLayout = ({ children }: any) => {
+  const [data, setData] = useState("");
+
   useEffect(() => {
     console.log("TeamPageLayout mounted");
     return () => console.log("TeamPageLayout unmounted");
@@ -23,9 +26,23 @@ const NestedLayout = ({ children }) => {
   const router = useRouter();
   const { team } = router.query;
 
+  const childToParentHandler = (childData: any) => {
+    console.log("dataFromChild", childData);
+    // setData(childData);
+
+    fetch("https://www.ag-grid.com/example-assets/row-data.json")
+      .then((result) => result.json())
+      .then((rowData) => {
+        const sel = rowData[childData].make;
+        console.log(sel);
+        setData(sel);
+      });
+    //   .then((selData) => console.log("detailData", selData));
+  };
+
   return (
-    <div>
-      <header>
+    <div className="flex flex-row">
+      {/* <header>
         <nav>
           <ul>
             <li>
@@ -39,13 +56,14 @@ const NestedLayout = ({ children }) => {
             </li>
           </ul>
         </nav>
-      </header>
+      </header> */}
+      <CarsGrid />
       <section>{children}</section>
     </div>
   );
 };
 
-const getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+const getLayout = (page: any) => <NestedLayout>{page}</NestedLayout>;
 
 export const TeamPageLayout = nestLayout(TeamsPageLayout, getLayout);
 

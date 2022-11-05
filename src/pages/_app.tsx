@@ -3,7 +3,7 @@ import Link from "next/link";
 import "../styles/globals.css";
 import styles from "../styles/App.module.css";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: any) {
   useEffect(() => {
     console.log("App layout mounted");
     return () => console.log("App layout unmounted");
@@ -31,7 +31,7 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
-const Layout = ({ Component, pageProps }) => {
+const Layout = ({ Component, pageProps }: any) => {
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />);
   } else {

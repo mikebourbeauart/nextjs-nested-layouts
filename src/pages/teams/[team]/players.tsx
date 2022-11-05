@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { TeamPageLayout } from "./";
+import { TeamPageLayout } from ".";
 
 const TeamPlayersPage = () => {
   const router = useRouter();
