@@ -1,27 +1,15 @@
-import { useRouter } from "next/router";
 import nestLayout from "../../../../utils/nestLayout";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { TeamsPageLayout } from "../../index";
 import { CarsGrid } from "~/components/AgGridExample";
 import { CarsPageLayout } from "../";
 
-const ShopPage = () => {
-  const router = useRouter();
-  const { team } = router.query;
-  return <section></section>;
-};
-
-const NestedLayout = ({ children }: any) => {
-  const [data, setData] = useState("");
-
+const ShopPage = ({ children }: any) => {
   useEffect(() => {
     console.log("CarsPageLayout mounted");
     return () => console.log("CarsPageLayout unmounted");
   }, []);
-
-  const router = useRouter();
 
   return (
     <div className="flex flex-row">
@@ -31,10 +19,10 @@ const NestedLayout = ({ children }: any) => {
   );
 };
 
-const getLayout = (page: any) => <NestedLayout>{page}</NestedLayout>;
+const getLayout = (page: any) => <ShopPage>{page}</ShopPage>;
 
 export const ShopPageLayout = nestLayout(CarsPageLayout, getLayout);
 
-ShopPage.getLayout = ShopPageLayout;
+ShopPage.getLayout = CarsPageLayout;
 
 export default ShopPage;

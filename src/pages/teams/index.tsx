@@ -6,7 +6,7 @@ const TeamsPage = () => {
   return <div>This is the Teams landing page</div>;
 };
 
-export const NestedLayout = ({ children }: any) => {
+export const TeamsLayout = ({ children }: any) => {
   useEffect(() => {
     console.log("TeamsPageLayout mounted");
     return () => console.log("TeamsPageLayout unmounted");
@@ -34,9 +34,7 @@ export const NestedLayout = ({ children }: any) => {
   );
 };
 
-export const TeamsPageLayout = (page: any) => (
-  <NestedLayout>{page}</NestedLayout>
-);
+export const TeamsPageLayout = (page: any) => <TeamsLayout>{page}</TeamsLayout>;
 
 TeamsPage.getLayout = TeamsPageLayout;
 

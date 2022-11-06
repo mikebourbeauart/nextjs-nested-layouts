@@ -7,10 +7,10 @@ import { useEffect, useState } from "react";
 const CarsPage = () => {
   const router = useRouter();
   const { team } = router.query;
-  return <section>{/* <h3>{team} i dah team</h3> */}</section>;
+  return <section className="CarsPageMike">The cars main page</section>;
 };
 
-const NestedLayout = ({ children }: any) => {
+const CarsLayout = ({ children }: any) => {
   const [data, setData] = useState("");
 
   useEffect(() => {
@@ -19,21 +19,6 @@ const NestedLayout = ({ children }: any) => {
   }, []);
 
   const router = useRouter();
-  const { team } = router.query;
-
-  const childToParentHandler = (childData: any) => {
-    console.log("dataFromChild", childData);
-    // setData(childData);
-
-    fetch("https://www.ag-grid.com/example-assets/row-data.json")
-      .then((result) => result.json())
-      .then((rowData) => {
-        const sel = rowData[childData].make;
-        console.log(sel);
-        setData(sel);
-      });
-    //   .then((selData) => console.log("detailData", selData));
-  };
 
   return (
     <div className="flex flex-col ">
@@ -41,13 +26,13 @@ const NestedLayout = ({ children }: any) => {
         <nav>
           <ul>
             <li>
-              <Link href={`/teams/${team}`}>About</Link>
+              <Link href={`/teams/cars`}>About</Link>
             </li>
             <li>
-              <Link href={`/teams/${team}/shop`}>Shop</Link>
+              <Link href={`/teams/cars/shop`}>Shop</Link>
             </li>
             <li>
-              <Link href={`/teams/${team}/fixtures`}>Fixtures</Link>
+              <Link href={`/teams/cars/fixtures`}>Fixtures</Link>
             </li>
           </ul>
         </nav>
@@ -57,7 +42,7 @@ const NestedLayout = ({ children }: any) => {
   );
 };
 
-const getLayout = (page: any) => <NestedLayout>{page}</NestedLayout>;
+const getLayout = (page: any) => <CarsLayout>{page}</CarsLayout>;
 
 export const CarsPageLayout = nestLayout(TeamsPageLayout, getLayout);
 
