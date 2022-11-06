@@ -7,6 +7,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css"; // Optional theme CSS
 import { useFetchData } from "./use-fetch-data";
 import { CellClickedEvent } from "ag-grid-community";
 import CellNavRenderer from "./CellNavRenderer";
+import { useRouter } from "next/router";
 
 export function CarsGrid({ childToParent }: any) {
   const gridRef = useRef<AgGridReact>(null);
@@ -21,7 +22,9 @@ export function CarsGrid({ childToParent }: any) {
   useEffect(() => {
     fetch("https://www.ag-grid.com/example-assets/row-data.json")
       .then((result) => result.json())
-      .then((rowData) => setRowData(rowData));
+      .then((rowData) => {
+        setRowData(rowData);
+      });
   }, []);
 
   const onSelectionChangedHandler = (event: any) => {
